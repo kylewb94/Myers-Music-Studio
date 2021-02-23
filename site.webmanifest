@@ -1,0 +1,22 @@
+{
+	"short_name": "MMS",
+	"name": "Myers Music Studio",
+	"description": "Voice and piano lessons.",
+	"icons": [
+		{
+			"src": "/img/icon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/img/icon-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "https://myersmusiclessons.com/",
+	"background_color": "#eee",
+	"display": "browser",
+	"scope": "/",
+	"theme_color": "#34b36d"
+}
