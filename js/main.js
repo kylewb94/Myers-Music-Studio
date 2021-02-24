@@ -43,51 +43,21 @@ $(document).ready(function($) {
 			scrollTop: $( $(this).attr('href') ).offset().top
 		}, 400);
 		return false;
-	});
-
-	
-	// Disable invalid form submission
-	
-	(function() {
-		'use strict';
-		window.addEventListener('load', function() {
-			// Fetch forms for Bootstrap validation styles
-			var forms = document.getElementsByClassName('needs-validation');
-			// Loop over and prevent submission
-			var validation = Array.prototype.filter.call(forms, function(form) {
-				form.addEventListener('submit', function(event) {
-					if (form.checkValidity() === false) {
-						event.preventDefault();
-						event.stopPropagation();
-					}
-					form.classList.add('was-validated');
-				}, false);
-			});
-		}, false);
-	})();
-	
+	});	
 	
 	// AJAX form submission
 	
-	(function ($) {
-		'use strict';
-		var form = $('#contact'),
-			form_data;
+	document.querySelector("form").addEventListener("submit", handleSubmit);
 
-		form.submit(function (e) {
-			e.preventDefault();
-			form_data = $(this).serialize();
-			$.ajax({
-				type: 'POST',
-				url: form.attr('action'),
-				data: form_data,
-				success: function () {
-					alert('Lesson inquiry successfully submitted. I will get back to you soon!')
-				}
-			});
-			return false;
-		});
-
-	})(jQuery);
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		let myForm = document.getElementById('contact');
+		let formData = new FormData(myForm)
+		fetch('/', {
+			method: 'POST',
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams(formData).toString()
+		}).then(() => alert('Lesson inquiry successfully submitted. I will get back to you soon!')).catch((error) => alert(error))
+	}
 
 });	
